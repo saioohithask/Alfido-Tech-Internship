@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful Navbar</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Gradient Background */
+    .navbar-custom {
+      background: linear-gradient(90deg, #ff7eb3, #ff758c, #ff4d4d, #ff9a44);
+      background-size: 300% 300%;
+      animation: gradientAnimation 12s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Navbar Brand */
+    .navbar-brand {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white !important;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+    }
+
+    /* Nav Links */
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-left: 10px;
+      transition: 0.4s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: white;
+      left: 50%;
+      bottom: -4px;
+      transition: 0.3s;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 60%;
+    }
+
+    .nav-link:hover {
+      color: #fff !important;
+      text-shadow: 0 0 8px white;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .dropdown-item {
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .dropdown-item:hover {
+      background: #ff7eb3;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Contact Button */
+    .btn-custom {
+      background: white;
+      color: #ff4d4d;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: 0.3s;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-custom:hover {
+      background: #ff4d4d;
+      color: white;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 1);
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+  <div class="container">
+
+    <!-- Logo / Brand -->
+    <a class="navbar-brand" href="#">
+      <img src="https://via.placeholder.com/40" class="me-2 rounded-circle shadow" alt="Logo">
+      NewSite
+    </a>
+
+    <!-- Hamburger -->
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="#home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#portfolio">Portfolio</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+            Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#design">Web Design</a></li>
+            <li><a class="dropdown-item" href="#dev">Development</a></li>
+            <li><a class="dropdown-item" href="#seo">SEO</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">Blog</a>
+        </li>
+
+      </ul>
+
+      <!-- Contact Button -->
+      <a href="#contact" class="btn btn-custom ms-lg-3 mt-3 mt-lg-0">Contact Us</a>
+
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
