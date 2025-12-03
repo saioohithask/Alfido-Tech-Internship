@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List - Version 2</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e6f0ff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .todo-box {
+      background: white;
+      width: 400px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #003d99;
+    }
+
+    .input-area {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    #taskInput {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #0066ff;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    #addBtn {
+      padding: 12px 15px;
+      margin-left: 10px;
+      background: #0066ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #addBtn:hover {
+      background: #004dcc;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      max-height: 270px;
+      overflow-y: auto;
+    }
+
+    li {
+      background: #f9f9f9;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 5px solid #0066ff;
+    }
+
+    li.completed {
+      text-decoration: line-through;
+      color: gray;
+      border-left: 5px solid #999;
+    }
+
+    .delete-btn {
+      background: #ff3333;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .delete-btn:hover {
+      background: #cc0000;
+    }
+
+    #clearAllBtn {
+      width: 100%;
+      padding: 12px;
+      background: #ff9900;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #clearAllBtn:hover {
+      background: #cc7a00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="todo-box">
+    <h2>My Tasks</h2>
+
+    <div class="input-area">
+      <input type="text" id="taskInput" placeholder="Add a new task...">
+      <button id="addBtn">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <button id="clearAllBtn">Clear All Tasks</button>
+  </div>
+
+
+  <script>
+    document.getElementById("addBtn").addEventListener("click", addTask);
+    document.getElementById("clearAllBtn").addEventListener("click", function () {
+      document.getElementById("taskList").innerHTML = "";
+    });
+
+    function addTask() {
+      const taskText = document.getElementById("taskInput").value.trim();
+
+      if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+      }
+
+      const li = document.createElement("li");
+
+      // Checkbox for completion
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.addEventListener("change", function () {
+        li.classList.toggle("completed");
+      });
+
+      // Task text
+      const span = document.createElement("span");
+      span.textContent = taskText;
+
+      // Delete button
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "Delete";
+      delBtn.className = "delete-btn";
+      delBtn.addEventListener("click", function () {
+        li.remove();
+      });
+
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      li.appendChild(delBtn);
+
+      document.getElementById("taskList").appendChild(li);
+
+      document.getElementById("taskInput").value = "";
+    }
+  </script>
+
+</body>
+</html>
