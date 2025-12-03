@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylish Random Background Color</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      transition: background 0.8s ease-in-out;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255,255,255,0.7);
+      animation: fadeDown 1.2s ease-out;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.25s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(255, 99, 71, 0.6);
+    }
+
+    .color-code {
+      margin-top: 25px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 25px;
+      border-radius: 50px;
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+      transition: background 0.5s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Random Background Generator</h1>
+
+  <div class="glass-box">
+    <button class="btn" id="changeColorBtn">Change Background</button>
+    <div class="color-code" id="colorCode">Current Color: Gradient</div>
+  </div>
+
+  <script>
+    // Generate random gradient
+    function randomGradient() {
+      const r1 = Math.floor(Math.random() * 256);
+      const g1 = Math.floor(Math.random() * 256);
+      const b1 = Math.floor(Math.random() * 256);
+
+      const r2 = Math.floor(Math.random() * 256);
+      const g2 = Math.floor(Math.random() * 256);
+      const b2 = Math.floor(Math.random() * 256);
+
+      return {
+        gradient: `linear-gradient(135deg, rgb(${r1}, ${g1}, ${b1}), rgb(${r2}, ${g2}, ${b2}))`,
+        color1: `rgb(${r1}, ${g1}, ${b1})`,
+        color2: `rgb(${r2}, ${g2}, ${b2})`
+      };
+    }
+
+    document.getElementById("changeColorBtn").addEventListener("click", function () {
+      const newBg = randomGradient();
+      document.body.style.background = newBg.gradient;
+      document.getElementById("colorCode").textContent = 
+        `Colors: ${newBg.color1} → ${newBg.color2}`;
+    });
+  </script>
+
+</body>
+</html>
