@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brown Profile Page</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at top, #5a3e2b, #3c2a21, #2a1c12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            background: rgba(255, 248, 240, 0.1);
+            box-shadow: 0 0 25px rgba(255, 242, 220, 0.15);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+
+        /* Animated gradient border */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: calc(100% + 6px);
+            height: calc(100% + 6px);
+            background: linear-gradient(45deg, #d4a373, #b08968, #7f5539, #9c6644);
+            background-size: 400%;
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 6s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid rgba(255, 242, 220, 0.3);
+            box-shadow: 0 0 20px #d4a373;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #b08968;
+        }
+
+        h1 {
+            color: #ffe9d6;
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #b08968;
+        }
+
+        p {
+            color: #f4e7d5;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 28px;
+            color: #4a3424;
+            background: #f4e7d5;
+            border: 2px solid #d4a373;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 0 12px #d4a373;
+        }
+
+        .btn:hover {
+            background: #d4a373;
+            color: white;
+            box-shadow: 0 0 20px #d4a373;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://plus.unsplash.com/premium_photo-1681666713641-8d722b681edc?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29uYWwlMjB3ZWJzaXRlfGVufDB8fDB8fHww" class="profile-img" alt="Profile">
+
+        <h1>Sai Oohtiha S</h1>
+        <p>
+            A creative and passionate individual who loves exploring new technologies, 
+            building modern web designs, and bringing ideas to life with style and innovation.
+        </p>
+
+        <a href="#" class="btn">Explore More</a>
+    </div>
+
+</body>
+</html>
